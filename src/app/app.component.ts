@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FeatureToggleService } from '@app/core/feature-toggle/feature-toggle.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-feature-toggle-demo';
+
+  public title = 'angular-feature-toggle-demo';
+  public isKillerFeatureEnabled = false;
+
+  constructor(private featureToggleService: FeatureToggleService) {
+    this.isKillerFeatureEnabled = featureToggleService.isFeatureEnabled('killer-feature');
+  }
 }
